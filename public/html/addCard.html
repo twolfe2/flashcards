@@ -1,0 +1,17 @@
+<div class="container">
+    <form ng-submit='addCard()'>
+        <div class="form-group">
+            <label>Question</label>
+            <input type="text" class="form-control" placeholder="Enter a Quesion" ng-model='newCard.question' required>
+        </div>
+        <div class="form-group">
+            <label>Answer</label>
+            <input type="text" class="form-control" placeholder="Enter the Answer" ng-model='newCard.answer' required>
+        </div>
+        <div class="form-group">
+            <label>Category</label>
+            <input type="text" class="form-control" placeholder="Enter a category (i.e. Math, English,...)" ng-model='newCard.category' required>
+        </div>
+        <button class="btn btn-primary btn-block">Add Flashcard</button>
+    </form>
+</div>
