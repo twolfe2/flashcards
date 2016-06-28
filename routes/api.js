@@ -6,7 +6,7 @@ const express = require('express');
 let router = express.Router();
 
 
-router.use('/superheros', require('./superheros'));
+router.use('/flashcards', require('./flashcards'));
 
 
 

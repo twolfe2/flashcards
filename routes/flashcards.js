@@ -2,7 +2,7 @@
 
 
 const express = require('express');
-let Superhero = require('../models/superhero');
+let Flashcard = require('../models/flashcard');
 
 let router = express.Router();
 
@@ -10,16 +10,16 @@ let router = express.Router();
 
 router.route('/')
   .get((req,res) => {
-  Superhero.find({}, (err, superheros)=> {
+  Flashcard.find({}, (err, flashcards)=> {
     if(err) return res.status(400).send(err);
-    res.send(superheros);
+    res.send(flashcards);
 
   });
 })
   .post((req,res) => {
 
 
-    Superhero.create(req.body, (err, savedDoc) => {
+    Flashcard.create(req.body, (err, savedDoc) => {
       if(err) return res.status(400).send(err);
 
       res.send(savedDoc);
@@ -40,24 +40,24 @@ router.route('/')
 
   router.route('/:id')
     .delete((req,res) => {
-      Superhero.findByIdAndRemove(req.params.id, (err) => {
+      Flashcard.findByIdAndRemove(req.params.id, (err) => {
         if(err) return res.status(400).send(err);
 
         res.send();
       });
     })
     .get((req,res) => {
-      Superhero.findById(req.params.id, (err, superhero) => {
+      Flashcard.findById(req.params.id, (err, flashcard) => {
         if(err) return res.status(400).send(err);
 
-        res.send(superhero);
+        res.send(flashcard);
       });
     })
     .put((req, res) => {
-      Superhero.findByIdAndUpdate(req.params.id, req.body,{new: true}, (err, superhero) => {
+      Flashcard.findByIdAndUpdate(req.params.id, req.body,{new: true}, (err, flashcard) => {
         if(err) return res.status(400).send(err);
 
-        res.send(superhero);
+        res.send(flashcard);
       });
     })
 
