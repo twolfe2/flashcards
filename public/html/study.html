@@ -1,16 +1,26 @@
 <div class="container">
-  Studying <span ng-repeat="cat in categories">{{cat}},</span>
-  <div class="text-center" ng-repeat='card in shuffledCards' ng-show="question[$index]">
+    <!-- Studying <span ng-repeat="cat in categories">{{cat}},</span> -->
+    <!-- <div class="col-xs-2">Score: {{score}} </div>   -->
     
-    <h3>Question:</h3>
-    <div class="well well-lg"><span>{{card.question}}</span></div>
-    <button class="button btn btn-success" ng-hide='showAnswer[$index]' ng-click='show($index)'>Show Answer</button>
-    <button class="button btn btn-primary" ng-show='showAnswer[$index]' ng-click='next($index)'>Next</button>
-    <div ng-show='showAnswer[$index]'>
-      
-      <h3>Answer:</h3>
-      <div class="well">{{card.answer}}</div>
+    <div class="text-center" ng-repeat='card in shuffledCards' ng-show="question[$index]">
+        <h3>Question:</h3>
+        <div class="well well-lg"><span>{{card.question}}</span></div>
+       
+         
+           
+         
+              
+              <button class="button btn btn-success" ng-hide='showAnswer[$index]' ng-click='show($index)'>Submit</button>
+  
+
+        <div ng-show='showAnswer[$index]' class="col-xs-12">
+            <h3>Answer:</h3>
+            <div class="well">{{card.answer}}</div>
+          <button class="button btn btn-primary" ng-show='showAnswer[$index]' ng-click='next($index)'>Next</button>
+        </div>
     </div>
-    
-  </div>
+    <!--  <div class="col-xs-5 col-xs-offset-4">
+              <input type="text" placeholder="Enter your Guess" ng-model="guess">
+              
+            </div> -->
 </div>

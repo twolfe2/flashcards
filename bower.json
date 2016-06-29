@@ -19,6 +19,11 @@
     "angular": "^1.5.7",
     "bootstrap": "^3.3.6",
     "angular-ui-router": "ui-router#^0.3.1",
-    "bootswatch-dist": "paper"
+    "bootswatch-dist": "paper",
+    "ngSweetAlert": "angular-sweetalert#^1.1.0",
+    "angular-bootstrap": "^1.3.3"
+  },
+  "resolutions": {
+    "angular": "^1.5.7"
   }
 }

@@ -1,5 +1,10 @@
 <div class="container">
-  <div class="text-center">
+<div ng-hide='cards.length>0' class="text-center">
+  <h1>No Flashcards to study</h1>
+  <button class="btn btn-primary" ui-sref="addCard">Add Flashcards</button>
+</div>
+<div ng-show='cards.length>0'>
+  <div class="text-center" >
     
     <h1>Let's Study</h1>
     <h5>Select the categories you would like to study below:</h5>
@@ -19,6 +24,6 @@
   </div>
 
 
-
+</div>
   
 </div>

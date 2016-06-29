@@ -103,8 +103,9 @@ app.controller('editCardCtrl', function($scope, $state, $stateParams, Card) {
 
 
 
-app.controller('studyCtrl', function($scope, $state, $stateParams, Card) {
+app.controller('studyCtrl', function($scope, $state, $stateParams, Card,SweetAlert) {
   // $scope.showAnswer = {};
+  $scope.score = 0;
   $scope.question = {};
   $scope.showAnswer = {};
   $scope.cards = $stateParams.cards;
@@ -119,19 +120,48 @@ app.controller('studyCtrl', function($scope, $state, $stateParams, Card) {
 
   $scope.show = (index) => {
     // console.log(index);
-    
+    // debugger;
+    // console.log($scope.guess === $scope.shuffledCards[index].answer);
+    // console.log($scope.guess,$scope.shuffledCards[index].answer)
+    // if($scope.guess === $scope.shuffledCards[index].answer) {
+    //   $scope.score++;
+    //   SweetAlert.swal({
+    //     title: "Correct!",
+    //     text: `Good Job!`,
+    //     type: "success"},function() {
+    //       $scope.showAnswer[index] = true;  
+    //     }
+    //   );
+
+    // }else {
+    //   SweetAlert.swal({
+    //     title: "Incorrect",
+    //     text: `The correct answer is: ${$scope.shuffledCards[index].answer}`,
+    //     type: "error"},function() {
+    //       $scope.showAnswer[index] = true;
+    //     }
+    //   );
+    // }
     $scope.showAnswer[index] = true;
   }
 
   $scope.next = (index) => {
     $scope.question[index] = false;
     console.log($scope.question[index+1]);
+    
 
     if(Object.keys($scope.question).length > cards.length-1){
-      alert('done');
-      $state.go('testing');
+      // alert('done');
+      SweetAlert.swal({
+        title: "Good Job!",
+        text: `You scored ${$scope.score} points. Press OK to continue.`,
+        type: "success"},function() {
+          $state.go('testing');    
+        }
+      );
+      
     }
-    $scope.question[index+1] = true;
+      $scope.question[index+1] = true;
     // debugger;
 
   }

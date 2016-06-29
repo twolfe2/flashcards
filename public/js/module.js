@@ -1,7 +1,7 @@
 'use strict';
 
 
-var app = angular.module('myApp', ['ui.router']);
+var app = angular.module('myApp', ['ui.router','oitozero.ngSweetAlert','ui.bootstrap']);
 
 
 
@@ -41,7 +41,7 @@ app.config(function($stateProvider, $urlRouterProvider){
       controller:'studyCtrl',
       params: {cards: null}
     })
-
+    $urlRouterProvider.otherwise('/');
 })
 
 
