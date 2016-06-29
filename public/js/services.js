@@ -39,6 +39,13 @@ app.service('Card', function($http,$q) {
 
   }
 
+  this.getByCategory = (categories) => {
+    return $http.post('/api/flashcards/categories',{categories})
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
 
 
 

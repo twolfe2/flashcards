@@ -7,6 +7,15 @@ let Flashcard = require('../models/flashcard');
 let router = express.Router();
 
 // /api/flashcards
+router.post('/categories', (req,res) => {
+  // console.log('hello???');
+  // res.send();
+  let categories = req.body.categories;
+  Flashcard.find({category: {$in: categories}}, (err, flashcards)=> {
+    if(err) return res.status(400).send(err);
+    res.send(flashcards);
+  });
+});
 
 router.route('/')
   .get((req,res) => {
@@ -25,7 +34,7 @@ router.route('/')
       res.send(savedDoc);
     });
    
-})
+});
   
 
 
@@ -50,7 +59,8 @@ router.route('/')
 
         res.send(flashcard);
       });
-    })
+    });
+
 
 
 module.exports  = router;
