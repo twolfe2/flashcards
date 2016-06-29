@@ -6,7 +6,16 @@ let Flashcard = require('../models/flashcard');
 
 let router = express.Router();
 
-// /api/superheros
+// /api/flashcards
+router.post('/categories', (req,res) => {
+  // console.log('hello???');
+  // res.send();
+  let categories = req.body.categories;
+  Flashcard.find({category: {$in: categories}}, (err, flashcards)=> {
+    if(err) return res.status(400).send(err);
+    res.send(flashcards);
+  });
+});
 
 router.route('/')
   .get((req,res) => {
@@ -24,17 +33,8 @@ router.route('/')
 
       res.send(savedDoc);
     });
-    
-    //OR, the below is more flexible 
-    // let superhero = new Superhero(req.body);
-
-    // superhero.save((err,savedDoc) => {
-    //   if(err) return res.status(400).send(err);
-
-    //   res.send(savedDoc);
-
-    // });
-})
+   
+});
   
 
 
@@ -59,18 +59,8 @@ router.route('/')
 
         res.send(flashcard);
       });
-    })
+    });
 
-// router.get('/', (req,res) => {
-//   Superhero.find({}, (err, superheros)=> {
-//     if(err) return res.status(400).send(err);
 
-//     res.send(superheros);
-//   });
-// });
-
-// router.post('/', (req,res) => {
-
-// })
 
 module.exports  = router;

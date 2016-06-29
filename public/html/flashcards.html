@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="text-center" ng-show='cards.length === 0'>
+    <h1>No Flashcards</h1>
+    <button class="btn btn-primary" ui-sref="addCard">Add a Flashcard</button>
+  </div>
+    
+    <div class="panel panel-default" ng-show='cards.length > 0'>
+        <div class="panel-heading">
+            <h3 class="text-center">Flashcards <button class="btn btn-primary btn-xs" ui-sref="addCard">+</button></h3>
+
+            <br>
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <!-- <pre>Sort by = {{propertyName}}; reverse = {{reverse}}</pre> -->
+                <label class="col-xs-3 col-xs-offset-9">See cards by category:
+                    <input class="form-control" ng-model='category'>
+                </label>
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Answer</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat='card in cards | filter:{category: category} track by card._id'>
+                        <td>{{card.question}}</td>
+                        <td>{{card.answer}}</td>
+                        <td>{{card.category}}</td>
+                        <td>
+                            <button class="btn btn-danger btn-xs" ng-click='deleteCard(card._id)'>X</button>
+                            <button class="btn btn-success btn-xs" ng-click='editCard(card)'>Edit</button>
+                        </td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </div>
+    </div>
